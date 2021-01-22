@@ -1,5 +1,4 @@
 <div class="container px-5 px-sm-0">
-  <%= flash[:success] %>
   <div class="row">
     <div class="col-md-3">
       <h2>User info</h2>
@@ -18,17 +17,19 @@
     　  </tbody>
     　</table>
     　<div class="row">
-    　  <a class="btn btn-outline-secondary btn-bloc fas fa-user-edit"href="/users/<%= current_user.id %>/edit", style="width:100%"></a>
+    　  <a class="btn btn-outline-secondary btn-bloc fas fa-user-cog"href="/users/<%=@book.user.id %>/edit", style="width:100%"></a>
     　</div>
       <%= render 'books/form' %>
     </div>
     <div class="col-md-8 offset-md-1">
-      <h2>Books Detail</h2>
+      <h2>Book detail</h2>
       <table>
         <thead>
             <tr style="box-sizing: border-box;">
               <th style="vertical-align: middle;border-top: 1px solid #dee2e6; width:30%">
-                <%= image_tag attachment_url(@book.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg"), size:'50x50' %>
+                <a href="/users/<%= @book.user.id %>">
+                  <%= image_tag attachment_url(@book.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg"), size:'50x50' %>
+                </a>
                 </br>
                 <%= link_to @book.user.name, "/users/#{@book.user.id}", :style=>"font-size:12px" %>
 
@@ -36,8 +37,8 @@
               <td style="padding: 0.75rem;vertical-align: middle;border-top: 1px solid #dee2e6; width:20%"><%= link_to @book.title, book_path(@book) %></td>
               <td style="padding: 0.75rem;vertical-align:  middle;border-top: 1px solid #dee2e6; width:30%"><%= @book.body %></td>
               <% if @book.user.id == current_user.id %>
-    　           <td style="padding: 0.75rem;vertical-align:  middle;border-top: 1px solid #dee2e6; %" > <%= link_to "edit", edit_book_path(@book), :class=>"btn btn-sm btn-success" %></td>&nbsp &nbsp
-    　           <td style="padding: 0.75rem;vertical-align:  middle;border-top: 1px solid #dee2e6; %"><%= link_to "destroy", book_path(@book), method: :delete,data: {confirm: "削除しますか？"}, :class=>"btn btn-sm btn-danger" %></td>
+    　           <td style="padding: 0.75rem;vertical-align:  middle;border-top: 1px solid #dee2e6; %" > <%= link_to "Edit", edit_book_path(@book), :class=>"btn btn-sm btn-success" %></td>&nbsp &nbsp
+    　           <td style="padding: 0.75rem;vertical-align:  middle;border-top: 1px solid #dee2e6; %"><%= link_to "Destroy", book_path(@book), method: :delete,data: {confirm: "削除しますか？"}, :class=>"btn btn-sm btn-danger" %></td>
     　         <% end %>
             </tr>
         </thead>

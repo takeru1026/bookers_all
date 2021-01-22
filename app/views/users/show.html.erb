@@ -1,5 +1,4 @@
 <div class="container px-5 px-sm-0">
-  <%= flash[:success] %>
   <div class="row">
     <div class="col-md-3">
       <h2>User info</h2>
@@ -18,7 +17,7 @@
     　  </tbody>
     　</table>
     　<div class="row">
-    　  <a class="btn btn-outline-secondary btn-bloc fas fa-user-edit"href="/users/<% @user.id %>/edit", style="width:100%"></a>
+    　  <a class="btn btn-outline-secondary btn-bloc fas fa-user-cog" href="/users/<%= @user.id %>/edit", style="width:100%"></a>
     　</div>
       <%= render 'books/form'%>
     </div>
@@ -37,9 +36,11 @@
           <% @user.books.each do |user| %>
             <tr style="box-sizing: border-box;">
               <td style="vertical-align:  middle;border-top: 1px solid #dee2e6;">
-                <%= image_tag attachment_url(@user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg"), size:'50x50' %>
+                <a href="/users/<%= @user.id %>">
+                  <%= image_tag attachment_url(@user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg"), size:'50x50' %>
+                </a>
               </td>
-              <td style="padding: 0.75rem;vertical-align: middle;border-top: 1px solid #dee2e6;"><%= user.title %></td>
+              <td style="padding: 0.75rem;vertical-align: middle;border-top: 1px solid #dee2e6;"><%= link_to user.title, book_path(user) %></td>
               <td style="padding: 0.75rem;vertical-align:  middle;border-top: 1px solid #dee2e6;"><%= user.body %></td>
             </tr>
           <% end %>

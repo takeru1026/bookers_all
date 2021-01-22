@@ -1,5 +1,4 @@
 <div class="container px-5 px-sm-0">
-  <%= flash[:success] %>
   <div class="row">
     <div class="col-md-3">
       <h2>User info</h2>
@@ -18,7 +17,7 @@
     　  </tbody>
     　</table>
     　<div class="row">
-    　  <a class="btn btn-outline-secondary btn-bloc fas fa-user-edit"href="/users/<%= current_user.id %>/edit", style="width:100%"></a>
+    　  <a class="btn btn-outline-secondary btn-bloc fas fa-user-cog"href="/users/<%= current_user.id %>/edit", style="width:100%"></a>
     　</div>
       <%= render 'books/form' %>
     </div>
@@ -40,7 +39,7 @@
                 <%= image_tag attachment_url(user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg"), size:'50x50' %>
               </td>
               <td style="padding: 0.75rem;vertical-align: middle;border-top: 1px solid #dee2e6;"><%= user.name %></td>
-              <td style="padding: 0.75rem;vertical-align:  middle;border-top: 1px solid #dee2e6;"><%= link_to "show", user_path(user)%></td>
+              <td style="padding: 0.75rem;vertical-align:  middle;border-top: 1px solid #dee2e6;"><%= link_to "Show", user_path(user)%></td>
             </tr>
           <% end %>
         </tbody>
