@@ -36,9 +36,9 @@
       <table>
         <thead>
           <tr style="box-sizing: border-box;">
-            <th style="width:20%; padding:12px"></th>
-            <th style="width:30%; padding:12px">Title</th>
-            <th style="width:50%; padding:12px">Opinion</th>
+            <th style="width:10%; padding:12px"></th>
+            <th style="width:25%; padding:12px">Title</th>
+            <th style="width:40%; padding:12px">Opinion</th>
             <th colspan="3"></th>
           </tr>
         </thead>
@@ -52,6 +52,7 @@
               </td>
               <td style="padding: 0.75rem;vertical-align: middle;border-top: 1px solid #dee2e6;"><%= link_to book.title, book_path(book) %></td>
               <td style="padding: 0.75rem;vertical-align:  middle;border-top: 1px solid #dee2e6;"><%= book.body %></td>
+              <td><%= link_to "#{book.comments.count}コメント", book_path(book)%></td>
             </tr>
           <% end %>
         </tbody>
