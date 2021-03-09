@@ -24,6 +24,10 @@
     　       <th  style="padding:10px">introduction</th>
     　       <th  style="padding:10px"><%= @user.introduction %></th>
     　     </tr>
+    　    <tr>
+    　      <th><%= "フォロー数: #{@user.follower.count}" %></th>
+           <th><%= "フォロワー数: #{@user.followed.count}" %></th>
+    　    </tr>
     　   </tbody>
     　</table>
     　<div class="row">
@@ -63,6 +67,9 @@
                     ♡<%= book.favorites.count %> いいね
                   <% end %>
                 <% end %>
+              </td>
+              <td>
+                <%= render 'relationships/follow', user: book.user %>
               </td>
             </tr>
           <% end %>
