@@ -26,7 +26,7 @@
       <table>
         <thead>
             <tr style="box-sizing: border-box;">
-              <th style="vertical-align: middle;border-top: 1px solid #dee2e6; width:30%">
+              <th style="vertical-align: middle;border-top: 1px solid #dee2e6; ">
                 <a href="/users/<%= @book.user.id %>">
                   <%= image_tag attachment_url(@book.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg"), size:'50x50' %>
                 </a>
@@ -34,24 +34,24 @@
                 <%= link_to @book.user.name, "/users/#{@book.user.id}", :style=>"font-size:12px" %>
 
               </th>
-              <td style="padding: 0.75rem;vertical-align: middle;border-top: 1px solid #dee2e6; width:20%"><%= link_to @book.title, book_path(@book) %></td>
-              <td style="padding: 0.75rem;vertical-align:  middle;border-top: 1px solid #dee2e6; width:30%"><%= @book.body %></td>
+              <td style="padding: 0.75rem;vertical-align: middle;border-top: 1px solid #dee2e6;"><%= link_to @book.title, book_path(@book) %></td>
+              <td style="padding: 0.75rem;vertical-align:  middle;border-top: 1px solid #dee2e6; "><%= @book.body %></td>
               <% if @book.user_id == current_user.id %>
     　           <td style="padding: 0.75rem;vertical-align:  middle;border-top: 1px solid #dee2e6; %" > <%= link_to "Edit", edit_book_path(@book), :class=>"btn btn-sm btn-success" %></td>&nbsp &nbsp
     　           <td style="padding: 0.75rem;vertical-align:  middle;border-top: 1px solid #dee2e6; %"><%= link_to "Destroy", book_path(@book), method: :delete,data: {confirm: "削除しますか？"}, :class=>"btn btn-sm btn-danger" %></td>
     　         <% end %>
     　         <% if @book.favorited_by?(current_user) %>
-    　           <p>
+    　           <td>
                   <%= link_to book_favorites_path(@book), method: :delete do %>
                     ♥<%= @book.favorites.count %> いいね
                   <% end %>
-                </p>
+                </td>
               <% else %>
-                <p>
+                <td>
                   <%= link_to book_favorites_path(@book), method: :post do %>
                     ♡<%= @book.favorites.count %> いいね
                   <% end %>
-                </p>
+                </td>
               <% end %>
             </tr>
         </thead>
