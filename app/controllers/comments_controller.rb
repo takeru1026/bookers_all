@@ -6,9 +6,9 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_back(fallback_location: books_path)
     else
-      @book=Book.find(params[:id])
-      @comment = Comment.new
-      render 'show'
+      @book=Book.find(params[:book_id])
+      @comment_new = @comment
+      render 'books/show'
     end
   end
 
